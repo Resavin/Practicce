@@ -5,6 +5,7 @@
 #include "funcs.cpp"
 
 ////////hello
+//////////hell
 using namespace std;
 
 enum {
