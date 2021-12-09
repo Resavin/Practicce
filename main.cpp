@@ -4,15 +4,13 @@
 #include <cmath>
 #include "funcs.cpp"
 
-/////////??????????????
-////////////
 using namespace std;
 
-enum {
-	NAME_SIZE = 19,
-	SIZE = 1,
-	GROUP_SIZE = 14
-};
+// enum {
+// 	NAME_SIZE = 19,
+// 	SIZE = 1,
+// 	GROUP_SIZE = 14
+// };
 
 enum {
 	INPUT = 1,
@@ -30,17 +28,17 @@ enum {
 	EXIT = 0
 };
 
-struct  student
-{
-	char name[NAME_SIZE]{"sd"};
-	char group[GROUP_SIZE]{"Иук4-12б"};
-	char year[5]{"2000"};
-	char mark[5]{"1234"};
-	float avgMark{};
-};
+// struct  student
+// {
+// 	char name[NAME_SIZE]{""};
+// 	char group[GROUP_SIZE]{"Иук4-12б"};
+// 	char year[5]{"2000"};
+// 	char mark[5]{"1234"};
+// 	float avgMark{};
+// };
 
 
-int inp{}, maxName = 19;
+int inp{};
 student list[SIZE];
 int minI{}, minMark{};
 char edit[]{};
@@ -68,78 +66,8 @@ int main(){
 		switch(inp){
 			case INPUT:
 				cout <<  endl << "//////// ВВОД СТУДЕНТОВ ////////";
-				for(int i{}; i < SIZE; i++){
-					cout << endl;
-					cout << "Введите данные студента " << i+1;
-					bool check = true;
-					input(i);
-					
-					//ИМЯ
-					do{
-						cout << endl <<  "Введите имя: ";
-						gets(list[i].name);
-						if(strlen(list[i].name) > NAME_SIZE){
-							cout << "Ошибка: имя не может содержать больше " << NAME_SIZE << " символов" << endl;
-							flag = true;
-						}
-						else{
-							if(strlen(list[i].name) > maxName)
-								maxName = strlen(list[i].name);
-							flag = false;
-						}
-					} while(flag == true);
-
-					//ГРУППА
-					do{
-						cout <<  "Введите группу: ";
-						cin.ignore();
-						cin >> list[i].group;
-						if(strlen(list[i].group) > GROUP_SIZE){
-							cout << "Ошибка: название группы не может содержать больше " << GROUP_SIZE << " символов" << endl;
-							flag = true;
-						}
-						else 
-							flag = false;
-					} while(flag == true);		
-
-					//ГОД
-					do{
-						cout << "Введите год поступления: ";
-						cin.ignore();
-						cin >> list[i].year;
-						int iyear = charToInt(list[i].year);
-						if( (strlen(list[i].year)) != 4){
-							cout << "Ошибка год поступления должен быть числом в отрезке [1755;2021]" << endl;
-							flag=true;	
-						}
-						else if( (iyear < 1755) or (iyear > 2021)){
-							cout << "Ошибка год поступления должен быть числом в отрезке [1755;2021]" << endl;
-							flag=true;
-						}
-						else
-							flag = false;
-					}while(flag == true);
-					
-
-					//ОЦЕНКИ
-					do{
-							cout << "Введите 4 оценки через пробел: ";
-							// cin.clear();
-							cin.ignore();
-							cin >> list[i].mark;
-								for(int j=0; j < 4; j++){
-									if( (((int)list[i].mark[j]-'0') > 5) or (((int)list[i].mark[j]-'0') < 1))
-										check = false;
-								}
-							if( (strlen(list[i].mark) != 4) or (check == false) ) {
-								cout << "Ошибка: оценки должны вводиться без пробелов и быть числами на отрезке [1;5]" << endl;
-								flag = true;
-							}
-							else{
-								flag = false;
-							}
-						}while(flag == true);
-					list[i].avgMark = ((int)list[i].mark[0]-'0'+(int)list[i].mark[1]-'0'+(int)list[i].mark[2]-'0'+(int)list[i].mark[3]-'0')/4.0;
+				for(int i=0; i < SIZE; i++){
+					list[i] = input(i, list);
 				}
 				break;
 				
@@ -152,7 +80,7 @@ int main(){
 					// cout << " w|" << setw(19) << "Имя|" << setw(13) << "Группа|" << setw(5) << "Год|" << setw(18) << "Оценки|"<< endl;
 					cout << "─#┐─────────────┘──Имя┐───Группа┐──Год┐──Оценки┐"<< endl;
 				for(int i{}; i<SIZE;i++){
-					cout << setw(2) << i+1 << '|' << setw(19) <<list[i].name << '|' << setw(13) << list[i].group << '|' << setw(5) << list[i].year << '|';
+					cout << setw(2) << i+1 << '|' << setw(maxName) <<list[i].name << '|' << setw(13) << list[i].group << '|' << setw(5) << list[i].year << '|';
 					for(int j{};j<4;j++)
 						cout << setw(2) << list[i].mark[j];
 					cout << '|' << endl;

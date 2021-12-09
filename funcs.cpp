@@ -2,47 +2,23 @@
 #include <iomanip>
 #include <cstring>
 #include <cmath>
-// #include "func.cpp"
 
 using namespace std;
 
 enum {
-	NAME_SIZE = 19,
+	NAME_SIZE = 29,
 	SIZE = 1,
 	GROUP_SIZE = 14
 };
 
-enum {
-	INPUT = 1,
-	INPUT_FROM_TXT,
-	INPUT_FROM_BIN,
-	OUTPUT,
-	OUTPUT_TO_TXT,
-	REQUEST,
-	// OUTPUT_TO_TXT,
-	TXT_TO_BIN,
-	ADD,
-	EDIT,
-	DEL,
-	SORT,
-	EXIT = 0
-};
-
 struct  student
 {
-	char name[NAME_SIZE]{"sd"};
+	char name[NAME_SIZE]{"ЯРослав Малов"};
 	char group[GROUP_SIZE]{"Иук4-12б"};
 	char year[5]{"2000"};
 	char mark[5]{"1234"};
 	float avgMark{};
 };
-
-
-int inp{}, maxName = 19;
-student list[SIZE];
-int minI{}, minMark{};
-char edit[]{};
-bool flag = true;
 
 
 int charToInt(char a[]){
@@ -106,7 +82,6 @@ void swap_char(char &a, char &b){
 // }
 
 
-
 void bubble_char(char arr[], int size){
 	int flag{};
 	cout << "Выберите сортировать по возрастанию или убыванию \n \
@@ -133,17 +108,21 @@ void bubble_char(char arr[], int size){
 	else{
 		cout << "Ошибка, выбрано неверное значение сортировки \n \
 		(1=сортировка по возрастанию, 2=сортировка по убыванию)";
-
 	}
-
-
 }
 
+
+
+
+int maxName = 19;
 student input(int i, student flist[]){
+	bool flag = true, check = true;
+	
 	//ИМЯ
 	do{
 		cout << endl <<  "Введите имя: ";
-		gets(flist[i].name);
+		cin.ignore();
+		cin.getline(flist[i].name, NAME_SIZE);
 		if(strlen(flist[i].name) > NAME_SIZE){
 			cout << "Ошибка: имя не может содержать больше " << NAME_SIZE << " символов" << endl;
 			flag = true;
@@ -209,9 +188,10 @@ student input(int i, student flist[]){
 	return flist[i];
 }
 
-int main(){
-	system("chcp 65001");
-	for(int i = 0; i < 3; i++)
-		list[i] = input(i);
-	cout << list[0].name << endl;
-}
+// int main(){
+// 	student list[2];
+// 	system("chcp 65001");
+// 	for(int i = 0; i < 3; i++)
+// 		list[i] = input(i, list);
+// 	cout << list[0].name << endl;
+// }
