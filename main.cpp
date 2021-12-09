@@ -4,12 +4,7 @@
 #include <cmath>
 #include "funcs.cpp"
 
-/////////TEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEST
-////////////222222222222222
-/////////////////////????????????????
-/////////////////asdasds
-//////////////////////////////////////////////////////////////////////////HEHEHE
-
+//NEW
 using namespace std;
 
 enum {
