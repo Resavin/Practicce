@@ -4,7 +4,7 @@
 #include <cmath>
 #include "funcs.cpp"
 
-//////////////////////////START
+///////////////////NEW
 using namespace std;
 
 enum {
