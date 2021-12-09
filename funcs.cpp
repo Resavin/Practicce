@@ -114,7 +114,7 @@ void bubble_char(char arr[], int size){
 
 
 
-int maxName = 19;
+int maxName= 19, maxGroup = 13;
 student input(int i, student flist[]){
 	bool flag = true, check = true;
 	

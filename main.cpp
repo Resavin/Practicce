@@ -75,10 +75,11 @@ int main(){
 
 
 			case OUTPUT:
-				cout << endl << "────────────────┐";
+				// cout << endl << "────────────────┐";
 				cout << endl << "Список студентов|" << endl;
 					// cout << " w|" << setw(19) << "Имя|" << setw(13) << "Группа|" << setw(5) << "Год|" << setw(18) << "Оценки|"<< endl;
-					cout << "─#┐─────────────┘──Имя┐───Группа┐──Год┐──Оценки┐"<< endl;
+					// cout << "─#┐─────────────┘──Имя┐───Группа┐──Год┐──Оценки┐"<< endl;
+				cout << " #" << setw(maxName) << "Имя" << '|' << setw(maxGroup) << "Группа" << '|' << setw(5) << "Год|" << endl; 
 				for(int i{}; i<SIZE;i++){
 					cout << setw(2) << i+1 << '|' << setw(maxName) <<list[i].name << '|' << setw(13) << list[i].group << '|' << setw(5) << list[i].year << '|';
 					for(int j{};j<4;j++)
